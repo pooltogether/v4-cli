@@ -1,0 +1,87 @@
+{
+  "name": "@pooltogether/v4-cli",
+  "description": "PoolTogether V4 Command Line Interface",
+  "author": "PoolTogether Inc",
+  "license": "GPL-3.0-only",
+  "version": "0.1.0-beta.3",
+  "repository": "https://github.com/pooltogether/v4-cli",
+  "homepage": "https://github.com/pooltogether/v4-cli",
+  "bugs": "https://github.com/pooltogether/v4-cli/issues",
+  "contributors": [
+    {
+      "name": "Kames Geraghty",
+      "email": "kames@pooltogether.com"
+    }
+  ],
+  "main": "dist/index.js",
+  "files": [
+    "/bin",
+    "/dist",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "bin": {
+    "ptv4": "./bin/run"
+  },
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint . --ext .ts --config .eslintrc --fix",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "yarn lint",
+    "prepack": "yarn build && oclif manifest && oclif readme",
+    "manifest": "oclif manifest",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md",
+    "_ptv4": "./bin/run"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {
+    "@ethersproject/bignumber": "^5.5.0",
+    "@ethersproject/providers": "^5.5.3",
+    "@oclif/core": "^1",
+    "@oclif/plugin-help": "^5",
+    "@oclif/plugin-plugins": "^2.0.1",
+    "@pooltogether/prize-api-schema": "^1.0.0-beta.1",
+    "@pooltogether/v4-client-js": "^0.10.2",
+    "@pooltogether/v4-pool-data": "^1.6.0",
+    "@pooltogether/v4-utils-js": "^0.1.0-beta.4",
+    "graphql": "^16.3.0",
+    "graphql-request": "^4.0.0",
+    "piscina": "^3.2.0"
+  },
+  "devDependencies": {
+    "@oclif/test": "^2",
+    "@pooltogether/evm-chains-extended": "^0.6.4-beta.1",
+    "@types/chai": "^4",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.9.4",
+    "ajv": "^8.9.0",
+    "chai": "^4",
+    "eslint": "^7.32.0",
+    "eslint-config-oclif": "^4",
+    "eslint-config-oclif-typescript": "^1.0.2",
+    "globby": "^11",
+    "mocha": "^9",
+    "oclif": "^2",
+    "shx": "^0.3.3",
+    "ts-node": "^10.2.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.3"
+  },
+  "oclif": {
+    "bin": "ptv4",
+    "dirname": "ptv4",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help"
+    ],
+    "topicSeparator": " ",
+    "topics": {}
+  },
+  "keywords": [
+    "oclif"
+  ],
+  "types": "dist/index.d.ts"
+}
