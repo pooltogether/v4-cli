@@ -55,7 +55,7 @@
     "@oclif/test": "^2",
     "@pooltogether/evm-chains-extended": "^0.6.4-beta.1",
     "@types/chai": "^4",
-    "@types/mocha": "^9.0.0",
+    "@types/mocha": "^9.1.0",
     "@types/node": "^16.9.4",
     "ajv": "^8.9.0",
     "chai": "^4",
