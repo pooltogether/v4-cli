@@ -1,0 +1,26 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node: ["16.9.0"]
+        os: [ubuntu-latest]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+      - name: Test
+        run: yarn test
+        env:
+          ETHEREUM_MAINNET_RPC_URL: ${{secrets.ETHEREUM_MAINNET_RPC_URL}}
+          POLYGON_MAINNET_RPC_URL: ${{secrets.POLYGON_MAINNET_RPC_URL}}
+      - name: Build
+        run: yarn build
