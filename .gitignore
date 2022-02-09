@@ -1,0 +1,12 @@
+*-debug.log
+*-error.log
+/.nyc_output
+/dist
+/lib
+/package-lock.json
+/tmp
+/temp
+node_modules
+oclif.manifest.json
+.envrc
+.DS_STORE
