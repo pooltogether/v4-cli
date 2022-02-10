@@ -81,7 +81,7 @@ export default class DrawPrizes extends Command {
     // /* -------------------------------------------------- */
     const ContractPrizePool = getContract(chainId, 'YieldSourcePrizePool')
     const ContractPrizeDistributor = getContract(chainId, 'PrizeDistributor')
-    const outDirWithSchema = createOutputPath(outDir, chainId, 'ContractPrizeDistributor.address', drawId)
+    const outDirWithSchema = createOutputPath(outDir, chainId, ContractPrizeDistributor.address, drawId)
     writeToOutput(outDirWithSchema, 'status', DrawPrizes.statusLoading)
 
     // // /* -------------------------------------------------- */

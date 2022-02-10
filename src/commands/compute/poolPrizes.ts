@@ -48,7 +48,7 @@ export default class PoolPrizes extends Command {
       for (const drawId of draws) {
         console.log(`Computing Draw prizes for drawId: ${drawId} on chainId: ${chainId} using ticket: ${ticket}`)
         // eslint-disable-next-line no-await-in-loop
-        await spawnComputeDrawPrizesProcess(chainId, drawId, ticket)
+        await spawnComputeDrawPrizesProcess(chainId, drawId, ticket, outDir)
       }
 
       core.setOutput('runStatus', 'true')
