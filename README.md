@@ -30,7 +30,7 @@ $ npm install -g @pooltogether/v4-cli
 $ ptv4 COMMAND
 running command...
 $ ptv4 (--version)
-@pooltogether/v4-cli/0.1.1 darwin-arm64 node-v16.0.0
+@pooltogether/v4-cli/0.1.3 darwin-arm64 node-v16.0.0
 $ ptv4 --help [COMMAND]
 USAGE
   $ ptv4 COMMAND

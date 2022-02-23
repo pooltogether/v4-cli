@@ -7,7 +7,7 @@ import {
   AVALANCHE_USDC_TICKET_ADDRESS,
 } from '../constants'
 
-function getPrizeDistributorAddress(chainId: string | number, ticket: string) {
+function getPrizeDistributorAddress(chainId: string | number, ticket: string): string {
   if (chainId === '1' && ticket === MAINNET_USDC_TICKET_ADDRESS) {
     return MAINNET_USDC_PRIZE_DISTRIBUTOR_ADDRESS
   }

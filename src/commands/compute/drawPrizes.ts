@@ -81,7 +81,7 @@ export default class DrawPrizes extends Command {
     // /* -------------------------------------------------- */
     const ContractPrizePool = getContract(chainId, 'YieldSourcePrizePool')
     const ContractPrizeDistributor = getContract(chainId, 'PrizeDistributor')
-    const outDirWithSchema = createOutputPath(outDir, chainId, ContractPrizeDistributor.address, drawId)
+    const outDirWithSchema = createOutputPath(outDir, chainId, ContractPrizeDistributor.address.toLowerCase(), drawId)
     writeToOutput(outDirWithSchema, 'status', DrawPrizes.statusLoading)
 
     // // /* -------------------------------------------------- */
@@ -131,7 +131,6 @@ export default class DrawPrizes extends Command {
     // /* -------------------------------------------------- */
     // // Compute Prizes & Write to Disk
     // /* -------------------------------------------------- */
-
     /**
      * @TODO: Add error handling on an account level, so if a worker fails, we can still
      *        continue to the next account while catching the error for an individual account.
