@@ -17,16 +17,24 @@
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 
-Interact with the **PoolTogether V4 protocol** via a command line interface (CLI).
 
-This CLI uses the [TWAB subgraphs](https://github.com/pooltogether/twab-subgraph) across networks to calculate TWABS for a given `drawId`, `ticket` and `network` (specified as CLI input args).
+The `@pooltogether/v4-cli` [node module package](https://www.npmjs.com/package/@pooltogether/v4-cli) is a NODE command line interface (CLI) to interact with the **PoolTogether V4 protocol**. The CLI uses the `v4-client-js` and `v4-utils-js` modules to fetch and run calculations/computations for essential PoolTogether V4 tasks.
 
-Then creates a thread for each address (using [Piscina](https://www.npmjs.com/package/piscina)) to call the [Draw Calculator JS library](https://github.com/pooltogether/draw-calculators-js) and outputs a `prizes.json` file (written to `outputDir` CLI arg) with structure:
+Primary CLI Commands (help)
+
+```sh
+npx @pooltogether/v4-cli help compute drawPrizes
+npx @pooltogether/v4-cli help compute poolPrizes
+npx @pooltogether/v4-cli help compute networkPrizes
+```
 
 # ⌨️ CLI Installation
 <!-- usage -->
 ```sh-session
 $ npm install -g @pooltogether/v4-cli
+```
+
+```sh-session
 $ ptv4 COMMAND
 running command...
 $ ptv4 (--version)
