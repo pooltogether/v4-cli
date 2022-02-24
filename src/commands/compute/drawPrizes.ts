@@ -20,6 +20,8 @@ import createOutputPath from '../../lib/utils/createOutputPath'
 import createExitCode from '../../lib/utils/createExitCode'
 import writeToOutput from '../../lib/utils/writeToOutput'
 import writePrizesToOutput from '../../lib/utils/writePrizesToOutput'
+import {verifyAgainstSchema} from '../../lib/utils/verifyAgainstSchema'
+import {sumPrizeAmounts} from '../../lib/utils'
 
 /**
  * @name DrawPrizes
@@ -76,17 +78,17 @@ export default class DrawPrizes extends Command {
     const {chainId, drawId, ticket, outDir} = flags
     this.log(`Running "calculate:prizes" on chainId: ${chainId} using drawID: ${drawId}`)
 
-    // /* -------------------------------------------------- */
-    // // Create Status File
-    // /* -------------------------------------------------- */
+    /* -------------------------------------------------- */
+    // Create Status File
+    /* -------------------------------------------------- */
     const ContractPrizePool = getContract(chainId, 'YieldSourcePrizePool')
     const ContractPrizeDistributor = getContract(chainId, 'PrizeDistributor')
     const outDirWithSchema = createOutputPath(outDir, chainId, ContractPrizeDistributor.address.toLowerCase(), drawId)
     writeToOutput(outDirWithSchema, 'status', DrawPrizes.statusLoading)
 
-    // // /* -------------------------------------------------- */
-    // // // Data Fetching
-    // // /* -------------------------------------------------- */
+    /* -------------------------------------------------- */
+    // Data Fetching
+    /* -------------------------------------------------- */
     const prizePool = new PrizePool(ContractPrizePool, getProvider(chainId), mainnet.contracts)
     const prizeDistributor = new PrizeDistributor(ContractPrizeDistributor, getProvider(chainId), mainnet.contracts)
     const ContractDrawBuffer = await prizeDistributor.getDrawBufferContract() as any
@@ -104,9 +106,9 @@ export default class DrawPrizes extends Command {
       drawEndTimestamp,
     )
 
-    // // /* -------------------------------------------------- */
-    // // // Computation
-    // // /* -------------------------------------------------- */
+    /* -------------------------------------------------- */
+    // Computation
+    /* -------------------------------------------------- */
     const userBalances: any[] = userAccounts.map((account: Account) => {
       const balance = calculateUserBalanceFromAccount(
         account,
@@ -128,9 +130,9 @@ export default class DrawPrizes extends Command {
       ticketTotalSupplies[0],
     )
 
-    // /* -------------------------------------------------- */
-    // // Compute Prizes & Write to Disk
-    // /* -------------------------------------------------- */
+    /* -------------------------------------------------- */
+    // Compute Prizes & Write to Disk
+    /* -------------------------------------------------- */
     /**
      * @TODO: Add error handling on an account level, so if a worker fails, we can still
      *        continue to the next account while catching the error for an individual account.
@@ -140,13 +142,13 @@ export default class DrawPrizes extends Command {
       PrizeDistribution,
       Draw,
     )
-
     const _flatPrizes = prizes.flat(1)
+    !verifyAgainstSchema(_flatPrizes) && this.error('Prizes DataStructure is not valid against schema')
     writeToOutput(outDirWithSchema, 'prizes', _flatPrizes)
     writePrizesToOutput(outDirWithSchema, prizes)
     const statusSuccess = updateStatusSuccess(DrawPrizes.statusLoading.createdAt, {
-      prizeLength: prizes.length,
-      amountsTotal: '',
+      prizeLength: _flatPrizes.length,
+      amountsTotal: sumPrizeAmounts(_flatPrizes),
     })
     writeToOutput(outDirWithSchema, 'status', statusSuccess)
   }
