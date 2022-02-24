@@ -9,7 +9,7 @@
 
 # 📇 PoolTogether V4 CLI
 
-![Tests](https://github.com/pooltogether/v4-cli/actions/workflows/main.yml/badge.svg)
+![CI](https://github.com/pooltogether/v4-cli/actions/workflows/main.yml/badge.svg)
 [![Version](https://img.shields.io/npm/v/@pooltogether/v4-cli.svg)](https://npmjs.org/package/@pooltogether/v4-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/@pooltogether/v4-cli.svg)](https://npmjs.org/package/@pooltogether/v4-cli)
 [![License](https://img.shields.io/npm/l/@pooltogether/v4-cli.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
