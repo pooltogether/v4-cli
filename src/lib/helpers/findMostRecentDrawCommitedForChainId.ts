@@ -5,13 +5,12 @@ import getPrizeDistributorAddress from './getPrizeDistributorAddress'
 
 function findMostRecentDrawCommitedForChainId(path: string, chainId: any, ticket: any): any {
   const prizeDistributor = getPrizeDistributorAddress(chainId, ticket)
-  const drawsPath = `${path}/${chainId}/${prizeDistributor}/draw`
+  const drawsPath = `${path}/${chainId}/${prizeDistributor.toLowerCase()}/draw`
   mkdirSync(drawsPath, {recursive: true})
   const draws = fs.readdirSync(resolve(drawsPath))
   const maxDraw = draws.reduce((a, b) => {
     return Math.max(a, b)
   }, 0)
-
   return maxDraw
 }
 

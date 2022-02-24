@@ -7,7 +7,7 @@ function writePrizesToOutput(
 ): void {
   for (const depositorPrizes of allPrizes) {
     const address = depositorPrizes[0].address
-    writeToOutput(outDir, address, depositorPrizes)
+    writeToOutput(outDir, address.toLowerCase(), depositorPrizes)
   }
 }
 

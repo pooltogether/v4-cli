@@ -1028,6 +1028,11 @@
   dependencies:
     evm-chains "^0.2.0"
 
+"@pooltogether/prize-api-schema@^1.0.0-beta.1":
+  version "1.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@pooltogether/prize-api-schema/-/prize-api-schema-1.0.0-beta.1.tgz#173d36fa93e03dcaca638706c17f9d01db9e07d7"
+  integrity sha512-6rSz5xQjBa+rqXjpU83cwBsOdeHdP3KAE+y4dMCDtMx/2qXzP9A20Py9tbTjUS8iivlGYO766jSFneDWOKrdqQ==
+
 "@pooltogether/utilities@^0.3.7":
   version "0.3.8"
   resolved "https://registry.yarnpkg.com/@pooltogether/utilities/-/utilities-0.3.8.tgz#f4fa0e9618c97a152e637575560ee226d9e9752d"
@@ -1045,10 +1050,10 @@
     "@pooltogether/utilities" "^0.3.7"
     debug "^4.3.3"
 
-"@pooltogether/v4-utils-js@^0.1.0-beta.4":
-  version "0.1.0-beta.4"
-  resolved "https://registry.yarnpkg.com/@pooltogether/v4-utils-js/-/v4-utils-js-0.1.0-beta.4.tgz#23b09d7965f080e9a7152cf2a41376ba27d20f32"
-  integrity sha512-sUlQqgUTW4Ne49/Gr/tSFlb45xCbru9UvUQfEsEkdlXrN3+bjd1mfSdYkNy2GxJR6KZfx3Z6b3Zpj6+VCvxD5w==
+"@pooltogether/v4-utils-js@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-utils-js/-/v4-utils-js-0.1.1.tgz#5766fab242e91af37bdc406caf772d795930d912"
+  integrity sha512-h0OuZFVc4EPQN47MxfiAxmgeim1U/Tm8KfqGWw6h7GeASsjQ/wGj6bBPNuZTISSmqNG6quNb2Xtcd4vkM8u5mw==
   dependencies:
     "@ethersproject/abi" "^5.5.0"
     "@ethersproject/address" "^5.5.0"
@@ -1311,7 +1316,7 @@ ajv@^6.10.0, ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ajv@^8.0.1:
+ajv@^8.0.1, ajv@^8.10.0:
   version "8.10.0"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.10.0.tgz#e573f719bd3af069017e3b66538ab968d040e54d"
   integrity sha512-bzqAEZOjkrUMl2afH8dknrq5KEk2SrwdBROR+vH1EKVQTqaUbJVPdc/gEdggTMM0Se+s+Ja4ju4TlNcStKl2Hw==

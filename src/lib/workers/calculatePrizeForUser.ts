@@ -6,11 +6,7 @@ function calculatePrizeForUser({user, prizeDistribution, draw}: {
   draw: any;
   prizeDistribution: PrizeDistribution,
 }): any {
-  const User = {
-    address: user.address,
-    normalizedBalances: [user.balance],
-  }
-  const [results] = computeWinningPicks(User, [draw], [prizeDistribution])
+  const [results] = computeWinningPicks(user.address, [BigNumber.from(user.balance)], [draw], [prizeDistribution])
   if (results.prizes.length === 0) return
   const prizes = results.prizes
   .map(prize => {
