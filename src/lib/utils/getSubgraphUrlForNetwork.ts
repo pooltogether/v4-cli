@@ -4,6 +4,8 @@ import {
   RINKEBY_TWAB_SUBGRAPH_URL,
   MUMBAI_TWAB_SUBGRAPH_URL,
   AVALANCHE_TWAB_SUBGRAPH_URL,
+  OPTIMISM_MAINNET_TWAB_SUBGRAPH_URL,
+  OPTIMISM_KOVAN_TWAB_SUBGRAPH_URL,
 } from '../constants'
 
 function getSubgraphUrlForNetwork(chainId: string): string {
@@ -18,6 +20,10 @@ function getSubgraphUrlForNetwork(chainId: string): string {
     return AVALANCHE_TWAB_SUBGRAPH_URL
   case '80001':
     return MUMBAI_TWAB_SUBGRAPH_URL
+  case '10':
+    return OPTIMISM_MAINNET_TWAB_SUBGRAPH_URL
+  case '69':
+    return OPTIMISM_KOVAN_TWAB_SUBGRAPH_URL
   default:
     throw new Error(`Unsupported network: ${chainId}`)
   }
