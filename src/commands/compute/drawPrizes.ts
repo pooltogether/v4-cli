@@ -1,7 +1,7 @@
 import {Command, Flags} from '@oclif/core'
 import {BigNumber} from '@ethersproject/bignumber'
 import {PrizeDistributor, PrizePool} from '@pooltogether/v4-client-js'
-import mainnet from '../../lib/contracts'
+import {mainnet} from '@pooltogether/v4-pool-data'
 import {
   calculateUserBalanceFromAccount,
   calculateNormalizedUserBalancesFromTotalSupply,
@@ -89,7 +89,9 @@ export default class DrawPrizes extends Command {
     /* -------------------------------------------------- */
     // Data Fetching
     /* -------------------------------------------------- */
-    const prizePool = new PrizePool(ContractPrizePool, getProvider(chainId), mainnet.contracts)
+    // @ts-ignore
+    const prizePool = new PrizePool(ContractPrizePool, getProvider(chainId), mainnet)
+    // @ts-ignore
     const prizeDistributor = new PrizeDistributor(ContractPrizeDistributor, getProvider(chainId), mainnet.contracts)
     const ContractDrawBuffer = await prizeDistributor.getDrawBufferContract() as any
     const ContractPrizeDistributionsBuffer = await prizeDistributor.getPrizeDistributionsBufferContract() as any

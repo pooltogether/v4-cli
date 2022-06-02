@@ -32,13 +32,10 @@ npx @pooltogether/v4-cli help compute networkPrizes
 <!-- usage -->
 ```sh-session
 $ npm install -g @pooltogether/v4-cli
-```
-
-```sh-session
 $ ptv4 COMMAND
 running command...
 $ ptv4 (--version)
-@pooltogether/v4-cli/0.1.4 darwin-arm64 node-v16.0.0
+@pooltogether/v4-cli/0.1.5 darwin-arm64 node-v16.0.0
 $ ptv4 --help [COMMAND]
 USAGE
   $ ptv4 COMMAND

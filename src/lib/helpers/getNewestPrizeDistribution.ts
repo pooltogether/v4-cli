@@ -6,6 +6,8 @@ import mainnet from '../contracts'
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 async function getNewestPrizeDistribution(chainId:any): Promise<any> {
   const ContractPrizeDistributor = getContract(chainId, 'PrizeDistributor')
+
+  // @ts-ignore
   const prizeDistributor = new PrizeDistributor(ContractPrizeDistributor, getProvider(chainId), mainnet.contracts)
   const ContractPrizeDistributionsBuffer = await prizeDistributor.getPrizeDistributionsBufferContract() as any
 
