@@ -16,6 +16,7 @@ import updateStatusFailure from '../../lib/utils/updateStatusFailure'
 import updateStatusSuccess from '../../lib/utils/updateStatusSuccess'
 import getContract from '../../lib/utils/getContract'
 import getProvider from '../../lib/utils/getProvider'
+import isTestnet from '../../lib/utils/isTestnet'
 import createOutputPath from '../../lib/utils/createOutputPath'
 import createExitCode from '../../lib/utils/createExitCode'
 import writeToOutput from '../../lib/utils/writeToOutput'
@@ -78,14 +79,13 @@ export default class DrawPrizes extends Command {
     const {chainId, drawId, ticket, outDir} = flags
     this.log(`Running "calculate:prizes" on chainId: ${chainId} using drawID: ${drawId}`)
 
-    const isTestnet = chainId === "69" ? true : false
-    const network = chainId === "69" ? testnet : mainnet
-    
+    const network = isTestnet(chainId) ? testnet : mainnet
+
     /* -------------------------------------------------- */
     // Create Status File
     /* -------------------------------------------------- */
-    const ContractPrizePool = getContract(chainId, 'YieldSourcePrizePool', isTestnet)
-    const ContractPrizeDistributor = getContract(chainId, 'PrizeDistributor', isTestnet)
+    const ContractPrizePool = getContract(chainId, 'YieldSourcePrizePool', isTestnet(chainId))
+    const ContractPrizeDistributor = getContract(chainId, 'PrizeDistributor', isTestnet(chainId))
     const outDirWithSchema = createOutputPath(outDir, chainId, ContractPrizeDistributor.address.toLowerCase(), drawId)
     writeToOutput(outDirWithSchema, 'status', DrawPrizes.statusLoading)
 
