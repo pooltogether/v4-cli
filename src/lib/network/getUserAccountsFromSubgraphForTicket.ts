@@ -9,8 +9,6 @@ async function getUserAccountsFromSubgraphForTicket(
 ): Promise<any[]> {
   const subgraphURL = getSubgraphUrlForNetwork(chainId)
   const _ticket = ticket.toLowerCase()
-
-  // now call subgraph
   const allUserBalances = await makeGraphQlQuery(
     subgraphURL,
     _ticket,

@@ -1,7 +1,7 @@
 import {Command, Flags} from '@oclif/core'
 import {BigNumber} from '@ethersproject/bignumber'
 import {PrizeDistributor, PrizePool} from '@pooltogether/v4-client-js'
-import {mainnet} from '@pooltogether/v4-pool-data'
+import {mainnet, testnet} from '@pooltogether/v4-pool-data'
 import {
   calculateUserBalanceFromAccount,
   calculateNormalizedUserBalancesFromTotalSupply,
@@ -78,21 +78,25 @@ export default class DrawPrizes extends Command {
     const {chainId, drawId, ticket, outDir} = flags
     this.log(`Running "calculate:prizes" on chainId: ${chainId} using drawID: ${drawId}`)
 
+    const isTestnet = chainId === "69" ? true : false
+    const network = chainId === "69" ? testnet : mainnet
+    
     /* -------------------------------------------------- */
     // Create Status File
     /* -------------------------------------------------- */
-    const ContractPrizePool = getContract(chainId, 'YieldSourcePrizePool')
-    const ContractPrizeDistributor = getContract(chainId, 'PrizeDistributor')
+    const ContractPrizePool = getContract(chainId, 'YieldSourcePrizePool', isTestnet)
+    const ContractPrizeDistributor = getContract(chainId, 'PrizeDistributor', isTestnet)
     const outDirWithSchema = createOutputPath(outDir, chainId, ContractPrizeDistributor.address.toLowerCase(), drawId)
     writeToOutput(outDirWithSchema, 'status', DrawPrizes.statusLoading)
 
     /* -------------------------------------------------- */
     // Data Fetching
     /* -------------------------------------------------- */
+    // console.log(testnet, 'testnet')
     // @ts-ignore
-    const prizePool = new PrizePool(ContractPrizePool, getProvider(chainId), mainnet)
+    const prizePool = new PrizePool(ContractPrizePool, getProvider(chainId), network.contracts)
     // @ts-ignore
-    const prizeDistributor = new PrizeDistributor(ContractPrizeDistributor, getProvider(chainId), mainnet.contracts)
+    const prizeDistributor = new PrizeDistributor(ContractPrizeDistributor, getProvider(chainId), network.contracts)
     const ContractDrawBuffer = await prizeDistributor.getDrawBufferContract() as any
     const ContractPrizeDistributionsBuffer = await prizeDistributor.getPrizeDistributionsBufferContract() as any
     const ContractTicket = await prizePool.getTicketContract() as any
