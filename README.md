@@ -32,9 +32,6 @@ npx @pooltogether/v4-cli help compute networkPrizes
 <!-- usage -->
 ```sh-session
 $ npm install -g @pooltogether/v4-cli
-```
-
-```sh-session
 $ ptv4 COMMAND
 running command...
 $ ptv4 (--version)
@@ -142,7 +139,7 @@ DESCRIPTION
   Computes Draw prizes for all PoolTogether V4 network PrizePools to a target output directory.
 
 EXAMPLES
-  $ ptv4 compute poolPrizes --chainId 1--ticket 0x0000000000000000000000000000000000000000 --outDir ./temp
+  $ ptv4 compute poolPrizes --chainId 1 --ticket 0x0000000000000000000000000000000000000000 --outDir ./temp
     Running compute:drawPrizes on chainId: 1 using drawID: 1
 ```
 
