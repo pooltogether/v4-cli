@@ -127,7 +127,7 @@ export default class DrawPrizes extends Command {
 
       return {
         balance,
-        address: account.id,
+        address: account.id.startsWith(ticket) ? account.address : account.id, // Retro compatible with old and new TWAB subgraph
       }
     })
     const filteredUserBalances: UserBalance[] = utils.filterUndefinedValues<UserBalance>(userBalances)
