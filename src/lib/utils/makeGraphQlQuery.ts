@@ -14,40 +14,40 @@ export async function makeGraphQlQuery(
 
   while (true) {
     const queryString = `{
-            ticket(id: "${_ticket}") {
-                accounts(first: ${maxPageSize} , where: { 
-                    
-                    id_gt: "${lastId}"
-                    }) {
-                    id
-                    delegateBalance
-                    
-    
-                    # get twab beforeOrAt drawStartTime
-                    beforeOrAtDrawStartTime: twabs(
-                        orderBy: timestamp
-                        orderDirection: desc
-                        first: 1
-                        where: { timestamp_lte: ${drawStartTime} } #drawStartTime
-                    ) {
-                        amount
-                        timestamp
-                        delegateBalance
-                    }
-                    # now get twab beforeOrAt drawEndTime (may be the same as above)
-                    beforeOrAtDrawEndTime: twabs(
-                        orderBy: timestamp
-                        orderDirection: desc
-                        first: 1
-                        where: { timestamp_lte: ${drawEndTime} } #drawEndTime
-                    ) {
-                        amount
-                        timestamp
-                        delegateBalance
-                    }
-                }
-            }
-        }`
+      ticket(id: "${_ticket}") {
+        accounts(first: ${maxPageSize} , where: {
+          id_gt: "${lastId}"
+        }) {
+          id
+          address
+          delegateBalance
+
+          # get twab beforeOrAt drawStartTime
+          beforeOrAtDrawStartTime: twabs(
+            orderBy: timestamp
+            orderDirection: desc
+            first: 1
+            where: { timestamp_lte: ${drawStartTime} } #drawStartTime
+          ) {
+            amount
+            timestamp
+            delegateBalance
+          }
+
+          # now get twab beforeOrAt drawEndTime (may be the same as above)
+          beforeOrAtDrawEndTime: twabs(
+            orderBy: timestamp
+            orderDirection: desc
+            first: 1
+            where: { timestamp_lte: ${drawEndTime} } #drawEndTime
+          ) {
+            amount
+            timestamp
+            delegateBalance
+          }
+        }
+      }
+    }`
 
     const query = gql`
             ${queryString}
