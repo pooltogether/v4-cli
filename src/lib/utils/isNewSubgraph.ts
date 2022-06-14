@@ -1,5 +1,5 @@
-import { NEW_SUBGRAPH_CHAIN_IDS } from '../constants'
+import { NEW_SUBGRAPH_CHAIN_IDS } from '../constants';
 
 export default (chainId: string): boolean => {
-  return NEW_SUBGRAPH_CHAIN_IDS.includes(chainId)
-}
+  return NEW_SUBGRAPH_CHAIN_IDS.includes(chainId);
+};
