@@ -1,9 +1,12 @@
 import {getContractsByType, sortContractsByChainId} from '@pooltogether/v4-client-js'
 import {mainnet, testnet} from '@pooltogether/v4-pool-data'
 
-function getContract(chainId: string, name: string, isTestnet?: boolean): any {
+import isTestnet from './isTestnet'
+
+function getContract(chainId: string, name: string): any {
   try {
-    const network = isTestnet ? testnet : mainnet
+    const network = isTestnet(chainId) ? testnet : mainnet
+
     // @ts-ignore
     const contract = getContractsByType(network.contracts, name)
     const contracts = sortContractsByChainId(contract)
