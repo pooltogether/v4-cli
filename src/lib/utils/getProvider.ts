@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/numeric-separators-style */
-import {JsonRpcProvider} from '@ethersproject/providers'
+import { JsonRpcProvider } from '@ethersproject/providers';
 
 const _providers = {
   // mainnets
@@ -12,16 +12,16 @@ const _providers = {
   80001: new JsonRpcProvider(process.env.POLYGON_MUMBAI_RPC_URL),
   43113: new JsonRpcProvider(process.env.AVALANCHE_FUJI_RPC_URL),
   69: new JsonRpcProvider(process.env.OPTIMISM_KOVAN_RPC_URL),
-}
+} as { [key: number]: JsonRpcProvider };
 
-const getProvider = (chainId: string) => {
-  // @ts-ignore
-  const provider = _providers[chainId]
+const getProvider = (chainId: string): JsonRpcProvider => {
+  const provider = _providers[Number(chainId)];
+
   if (!provider) {
-    throw new Error(`No provider for chainId ${chainId}`)
+    throw new Error(`No provider for chainId ${chainId}`);
   }
 
-  return provider
-}
+  return provider;
+};
 
-export default getProvider
+export default getProvider;
