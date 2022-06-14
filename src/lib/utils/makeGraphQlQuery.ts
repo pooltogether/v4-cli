@@ -1,19 +1,53 @@
 import {request, gql} from 'graphql-request'
 
-export async function makeGraphQlQuery(
-  subgraphURL: string,
+import getSubgraphUrlForNetwork from '../utils/getSubgraphUrlForNetwork'
+import isNewSubgraph from './isNewSubgraph'
+
+const buildQueryString = (
+  chainId: string,
   _ticket: string,
   drawStartTime: number,
   drawEndTime: number,
-): Promise<any> {
-  const maxPageSize = 1000
-  let lastId = ''
+  maxPageSize: number,
+  lastId: string,
+) => {
+  let queryString = `{
+    ticket(id: "${_ticket}") {
+      accounts(first: ${maxPageSize} , where: {
+        id_gt: "${lastId}"
+      }) {
+        id
+        delegateBalance
 
-  let data
-  const results = []
+        # get twab beforeOrAt drawStartTime
+        beforeOrAtDrawStartTime: twabs(
+          orderBy: timestamp
+          orderDirection: desc
+          first: 1
+          where: { timestamp_lte: ${drawStartTime} } #drawStartTime
+        ) {
+          amount
+          timestamp
+          delegateBalance
+        }
 
-  while (true) {
-    const queryString = `{
+        # now get twab beforeOrAt drawEndTime (may be the same as above)
+        beforeOrAtDrawEndTime: twabs(
+          orderBy: timestamp
+          orderDirection: desc
+          first: 1
+          where: { timestamp_lte: ${drawEndTime} } #drawEndTime
+        ) {
+          amount
+          timestamp
+          delegateBalance
+        }
+      }
+    }
+  }`
+
+  if (isNewSubgraph(chainId)) {
+    queryString = `{
       ticket(id: "${_ticket}") {
         accounts(first: ${maxPageSize} , where: {
           id_gt: "${lastId}"
@@ -48,12 +82,34 @@ export async function makeGraphQlQuery(
         }
       }
     }`
+  }
+
+  return queryString
+}
+
+export async function makeGraphQlQuery(
+  chainId: string,
+  _ticket: string,
+  drawStartTime: number,
+  drawEndTime: number,
+): Promise<any> {
+  const subgraphURL = getSubgraphUrlForNetwork(chainId)
+
+  const maxPageSize = 1000
+  let lastId = ''
+
+  let data
+  const results = []
+
+  while (true) {
+    const queryString = buildQueryString(chainId, _ticket, drawStartTime, drawEndTime, maxPageSize, lastId)
 
     const query = gql`
             ${queryString}
         `
 
-    data = await request(subgraphURL, query)
+    data = await request(subgraphURL, query);
+
     results.push(data.ticket.accounts)
 
     const numberOfResults = data.ticket.accounts.length

@@ -1,5 +1,4 @@
 import makeGraphQlQuery from '../utils/makeGraphQlQuery'
-import getSubgraphUrlForNetwork from '../utils/getSubgraphUrlForNetwork'
 
 async function getUserAccountsFromSubgraphForTicket(
   chainId: string,
@@ -7,10 +6,9 @@ async function getUserAccountsFromSubgraphForTicket(
   drawStartTime: number,
   drawEndTime: number,
 ): Promise<any[]> {
-  const subgraphURL = getSubgraphUrlForNetwork(chainId)
   const _ticket = ticket.toLowerCase()
   const allUserBalances = await makeGraphQlQuery(
-    subgraphURL,
+    chainId,
     _ticket,
     drawStartTime,
     drawEndTime,

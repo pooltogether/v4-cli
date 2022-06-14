@@ -84,8 +84,8 @@ export default class DrawPrizes extends Command {
     /* -------------------------------------------------- */
     // Create Status File
     /* -------------------------------------------------- */
-    const ContractPrizePool = getContract(chainId, 'YieldSourcePrizePool', isTestnet(chainId))
-    const ContractPrizeDistributor = getContract(chainId, 'PrizeDistributor', isTestnet(chainId))
+    const ContractPrizePool = getContract(chainId, 'YieldSourcePrizePool')
+    const ContractPrizeDistributor = getContract(chainId, 'PrizeDistributor')
     const outDirWithSchema = createOutputPath(outDir, chainId, ContractPrizeDistributor.address.toLowerCase(), drawId)
     writeToOutput(outDirWithSchema, 'status', DrawPrizes.statusLoading)
 
