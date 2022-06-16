@@ -3,19 +3,19 @@ export const MAINNET_TWAB_SUBGRAPH_URL = 'https://api.thegraph.com/subgraphs/nam
 export const RINKEBY_TWAB_SUBGRAPH_URL = 'https://api.thegraph.com/subgraphs/name/pooltogether/rinkeby-twab'
 export const MUMBAI_TWAB_SUBGRAPH_URL = 'https://api.thegraph.com/subgraphs/name/pooltogether/mumbai-twab'
 export const AVALANCHE_TWAB_SUBGRAPH_URL = 'https://api.thegraph.com/subgraphs/name/pooltogether/avalanche-twab'
-export const OPTIMISM_MAINNET_TWAB_SUBGRAPH_URL = ''
+export const OPTIMISM_MAINNET_TWAB_SUBGRAPH_URL = 'https://thegraph.com/explorer/subgraph/underethsea/optimism-twab'
 export const OPTIMISM_KOVAN_TWAB_SUBGRAPH_URL = 'https://api.thegraph.com/subgraphs/name/pooltogether/optimism-kovan-twab'
 
 export const MAINNET_USDC_TICKET_ADDRESS = '0xdd4d117723C257CEe402285D3aCF218E9A8236E1'
 export const POLYGON_USDC_TICKET_ADDRESS = '0x6a304dFdb9f808741244b6bfEe65ca7B3b3A6076'
 export const AVALANCHE_USDC_TICKET_ADDRESS = '0xb27f379c050f6ed0973a01667458af6ecebc1d90'
-export const OPTIMISM_MAINNET_USDC_TICKET_ADDRESS = ''
+export const OPTIMISM_MAINNET_USDC_TICKET_ADDRESS = '0x5E5b54cd73872ba3103cd95A58067A7079d0259b'
 export const OPTIMISM_KOVAN_USDC_TICKET_ADDRESS = '0x2540Be4EE62A5E01F27491044AeBb9C2c95A550A'
 
 export const MAINNET_USDC_PRIZE_DISTRIBUTOR_ADDRESS = '0xb9a179dca5a7bf5f8b9e088437b3a85ebb495efe'
 export const POLYGON_USDC_PRIZE_DISTRIBUTOR_ADDRESS = '0x8141bcfbcee654c5de17c4e2b2af26b67f9b9056'
 export const AVALANCHE_USDC_PRIZE_DISTRIBUTOR_ADDRESS = '0x83332f908f403ce795d90f677ce3f382fe73f3d1'
-export const OPTIMISM_MAINNET_USDC_PRIZE_DISTRIBUTOR_ADDRESS = ''
+export const OPTIMISM_MAINNET_USDC_PRIZE_DISTRIBUTOR_ADDRESS = '0xa365317291122b44a549C34a383CCd117b71941e'
 export const OPTIMISM_KOVAN_USDC_PRIZE_DISTRIBUTOR_ADDRESS = '0x99bD66B65B223c979665c9B8041d08E516683425'
 
 export const PRODUCTION_ENV_CHAIN_IDS = ['1', '137', '43114', '10']
