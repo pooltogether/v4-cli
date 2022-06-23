@@ -1,7 +1,7 @@
-import {request, gql} from 'graphql-request'
+import { request, gql } from 'graphql-request';
 
-import getSubgraphUrlForNetwork from '../utils/getSubgraphUrlForNetwork'
-import isNewSubgraph from './isNewSubgraph'
+import getSubgraphUrlForNetwork from '../utils/getSubgraphUrlForNetwork';
+import isNewSubgraph from './isNewSubgraph';
 
 const buildQueryString = (
   chainId: string,
@@ -44,7 +44,7 @@ const buildQueryString = (
         }
       }
     }
-  }`
+  }`;
 
   if (isNewSubgraph(chainId)) {
     queryString = `{
@@ -81,11 +81,11 @@ const buildQueryString = (
           }
         }
       }
-    }`
+    }`;
   }
 
-  return queryString
-}
+  return queryString;
+};
 
 export async function makeGraphQlQuery(
   chainId: string,
@@ -93,35 +93,37 @@ export async function makeGraphQlQuery(
   drawStartTime: number,
   drawEndTime: number,
 ): Promise<any> {
-  const subgraphURL = getSubgraphUrlForNetwork(chainId)
+  const subgraphURL = getSubgraphUrlForNetwork(chainId);
 
-  const maxPageSize = 1000
-  let lastId = ''
+  const maxPageSize = 1000;
+  let lastId = '';
 
-  let data
-  const results = []
+  let data;
+  const results = [];
 
+  // eslint-disable-next-line no-constant-condition
   while (true) {
-    const queryString = buildQueryString(chainId, _ticket, drawStartTime, drawEndTime, maxPageSize, lastId)
+    const queryString = buildQueryString(chainId, _ticket, drawStartTime, drawEndTime, maxPageSize, lastId);
 
     const query = gql`
-            ${queryString}
-        `
+      ${queryString}
+    `;
 
+    // eslint-disable-next-line no-await-in-loop
     data = await request(subgraphURL, query);
 
-    results.push(data.ticket.accounts)
+    results.push(data.ticket.accounts);
 
-    const numberOfResults = data.ticket.accounts.length
+    const numberOfResults = data.ticket.accounts.length;
     if (numberOfResults < maxPageSize) {
       // we have gotten all the results
-      break
+      break;
     }
 
-    lastId = data.ticket.accounts[data.ticket.accounts.length - 1].id
+    lastId = data.ticket.accounts[data.ticket.accounts.length - 1].id;
   }
 
-  return results.flat(1)
+  return results.flat(1);
 }
 
-export default makeGraphQlQuery
+export default makeGraphQlQuery;
