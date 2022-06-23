@@ -17,10 +17,5 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
-      - name: Test
-        run: yarn test
-        env:
-          ETHEREUM_MAINNET_RPC_URL: ${{secrets.ETHEREUM_MAINNET_RPC_URL}}
-          POLYGON_MAINNET_RPC_URL: ${{secrets.POLYGON_MAINNET_RPC_URL}}
       - name: Build
         run: yarn build
