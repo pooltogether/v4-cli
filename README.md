@@ -52,11 +52,13 @@ ptv4 compute drawPrizes
 
 Computes single Draw prizes for a PrizePool to a target output directory.
 
-Simply pass a `chainId`, `ticket` `drawId` and `outDir` to compute and locally save the results. 
+Simply pass a `chainId`, `ticket` `drawId` and `outDir` to compute and locally save the results.
+
+To compute prizes for the genesis Prize Pool network, pass `--version 1`, for the tokenomics upgrade, pass `--version 2`.
 
 ```
 USAGE
-  $ ptv4 compute drawPrizes --chainId 1 --drawId 65 --outDir ./temp --ticket '0xdd4d117723C257CEe402285D3aCF218E9A8236E1'
+  $ ptv4 compute drawPrizes --version 1 --chainId 1 --drawId 65 --outDir ./temp --ticket '0xdd4d117723C257CEe402285D3aCF218E9A8236E1'
 
 DESCRIPTION
   Computes single Draw prizes for a PrizePool to a target output directory.

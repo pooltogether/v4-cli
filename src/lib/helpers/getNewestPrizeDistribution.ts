@@ -1,21 +1,24 @@
-/* eslint-disable node/no-extraneous-import */
-import {PrizeDistributor} from '@pooltogether/v4-client-js'
-import {mainnet, testnet} from '@pooltogether/v4-pool-data'
+import { Contract, ContractList } from '@pooltogether/contract-list-schema';
+import { ContractType, PrizeDistributorV1 } from '@pooltogether/v4-client-js';
+import { mainnet } from '@pooltogether/v4-pool-data';
 
-import {getContract, getProvider, isTestnet} from '../utils'
+import { getContract, getProvider } from '../utils';
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-async function getNewestPrizeDistribution(chainId:any): Promise<any> {
-  const isTestnetNetwork = isTestnet(chainId)
-  const network = isTestnetNetwork ? testnet : mainnet
+export default async function getNewestPrizeDistribution(
+  chainId: string,
+  network: ContractList,
+): Promise<any> {
+  const ContractPrizeDistributor = getContract(chainId, ContractType.PrizeDistributor, network);
 
-  const ContractPrizeDistributor = getContract(chainId, 'PrizeDistributor', isTestnetNetwork)
+  const prizeDistributor = new PrizeDistributorV1(
+    ContractPrizeDistributor,
+    getProvider(chainId),
+    mainnet.contracts as unknown as Contract[],
+  );
 
-  const prizeDistributor = new PrizeDistributor(ContractPrizeDistributor, getProvider(chainId), network.contracts)
-  const ContractPrizeDistributionsBuffer = await prizeDistributor.getPrizeDistributionsBufferContract() as any
+  const ContractPrizeDistributionsBuffer =
+    await prizeDistributor.getPrizeDistributionsBufferContract();
+  const prizeDistribution = await ContractPrizeDistributionsBuffer.getNewestPrizeDistribution();
 
-  const prizeDistribution = await ContractPrizeDistributionsBuffer.getNewestPrizeDistribution()
-  return prizeDistribution
+  return prizeDistribution;
 }
-
-export default getNewestPrizeDistribution
