@@ -2,6 +2,22 @@
 # yarn lockfile v1
 
 
+"@aave/core-v3@1.13.1", "@aave/core-v3@^1.10.0":
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/@aave/core-v3/-/core-v3-1.13.1.tgz#09fbb0ca218cc1d1d75d9ba50a3719f7ba53422f"
+  integrity sha512-BDXQhp3hQxl3nA+QuUatOE8q0pizIpGxdx5DYsKcitE+zAWiljuSvF74LSV49xnoQkznZWI1XVgXGcLEl3N4Ng==
+  dependencies:
+    "@nomiclabs/hardhat-etherscan" "^2.1.7"
+    axios-curlirize "^1.3.7"
+    tmp-promise "^3.0.2"
+
+"@aave/periphery-v3@1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@aave/periphery-v3/-/periphery-v3-1.10.0.tgz#ce66d49f7a998b3046f9b2c54c25917b3dc06655"
+  integrity sha512-1sDWiojMcJUHr3htntSodDRnPr/41wNTklc0r8a9larZAuz2B2MrjX/3XnplNvhTx6HWHP4x3W9IbRs8AZgh7g==
+  dependencies:
+    "@aave/core-v3" "^1.10.0"
+
 "@actions/core@^1.6.0":
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/@actions/core/-/core-1.8.2.tgz#67539d669ae9b751430469e9ae4d83e0525973ac"
@@ -260,6 +276,21 @@
     "@ethersproject/properties" "^5.6.0"
     "@ethersproject/strings" "^5.6.1"
 
+"@ethersproject/abi@5.6.4", "@ethersproject/abi@^5.1.2":
+  version "5.6.4"
+  resolved "https://registry.yarnpkg.com/@ethersproject/abi/-/abi-5.6.4.tgz#f6e01b6ed391a505932698ecc0d9e7a99ee60362"
+  integrity sha512-TTeZUlCeIHG6527/2goZA6gW5F8Emoc7MrZDC7hhP84aRGvW3TEdTnZR08Ls88YXM1m2SuK42Osw/jSi3uO8gg==
+  dependencies:
+    "@ethersproject/address" "^5.6.1"
+    "@ethersproject/bignumber" "^5.6.2"
+    "@ethersproject/bytes" "^5.6.1"
+    "@ethersproject/constants" "^5.6.1"
+    "@ethersproject/hash" "^5.6.1"
+    "@ethersproject/keccak256" "^5.6.1"
+    "@ethersproject/logger" "^5.6.0"
+    "@ethersproject/properties" "^5.6.0"
+    "@ethersproject/strings" "^5.6.1"
+
 "@ethersproject/abstract-provider@5.6.1", "@ethersproject/abstract-provider@^5.6.1":
   version "5.6.1"
   resolved "https://registry.yarnpkg.com/@ethersproject/abstract-provider/-/abstract-provider-5.6.1.tgz#02ddce150785caf0c77fe036a0ebfcee61878c59"
@@ -284,7 +315,7 @@
     "@ethersproject/logger" "^5.6.0"
     "@ethersproject/properties" "^5.6.0"
 
-"@ethersproject/address@5.6.1", "@ethersproject/address@^5.5.0", "@ethersproject/address@^5.6.1":
+"@ethersproject/address@5.6.1", "@ethersproject/address@^5.0.2", "@ethersproject/address@^5.5.0", "@ethersproject/address@^5.6.1":
   version "5.6.1"
   resolved "https://registry.yarnpkg.com/@ethersproject/address/-/address-5.6.1.tgz#ab57818d9aefee919c5721d28cd31fd95eff413d"
   integrity sha512-uOgF0kS5MJv9ZvCz7x6T2EXJSzotiybApn4XlOgoTX0xdtyVIJ7pF+6cGPxiEq/dpBiTfMiw7Yc81JcwhSYA0Q==
@@ -417,6 +448,13 @@
   version "5.6.3"
   resolved "https://registry.yarnpkg.com/@ethersproject/networks/-/networks-5.6.3.tgz#3ee3ab08f315b433b50c99702eb32e0cf31f899f"
   integrity sha512-QZxRH7cA5Ut9TbXwZFiCyuPchdWi87ZtVNHWZd0R6YFgYtes2jQ3+bsslJ0WdyDe0i6QumqtoYqvY3rrQFRZOQ==
+  dependencies:
+    "@ethersproject/logger" "^5.6.0"
+
+"@ethersproject/networks@5.6.4":
+  version "5.6.4"
+  resolved "https://registry.yarnpkg.com/@ethersproject/networks/-/networks-5.6.4.tgz#51296d8fec59e9627554f5a8a9c7791248c8dc07"
+  integrity sha512-KShHeHPahHI2UlWdtDMn2lJETcbtaJge4k7XSjDR9h79QTd6yQJmv6Cp2ZA4JdqWnhszAOLSuJEd9C0PRw7hSQ==
   dependencies:
     "@ethersproject/logger" "^5.6.0"
 
@@ -678,6 +716,19 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
+
+"@nomiclabs/hardhat-etherscan@^2.1.7":
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/@nomiclabs/hardhat-etherscan/-/hardhat-etherscan-2.1.8.tgz#e206275e96962cd15e5ba9148b44388bc922d8c2"
+  integrity sha512-0+rj0SsZotVOcTLyDOxnOc3Gulo8upo0rsw/h+gBPcmtj91YqYJNhdARHoBxOhhE8z+5IUQPx+Dii04lXT14PA==
+  dependencies:
+    "@ethersproject/abi" "^5.1.2"
+    "@ethersproject/address" "^5.0.2"
+    cbor "^5.0.2"
+    debug "^4.1.1"
+    fs-extra "^7.0.1"
+    node-fetch "^2.6.0"
+    semver "^6.3.0"
 
 "@npmcli/arborist@^4.0.4":
   version "4.3.1"
@@ -1056,10 +1107,21 @@
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.5.0.tgz#3fd75d57de172b3743cdfc1206883f56430409cc"
   integrity sha512-fdkzKPYMjrRiPK6K4y64e6GzULR7R7RwxSigHS8DDp7aWDeoReqsQI+cxHV1UuhAqX69L1lAaWDxenfP+xiqzA==
 
-"@pooltogether/aave-yield-source@1.1.0":
+"@pooltogether/aave-v3-yield-source@1.1.0":
   version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@pooltogether/aave-yield-source/-/aave-yield-source-1.1.0.tgz#3ca045d82b587e5a08bfc7cf0d46a3eff6445b19"
-  integrity sha512-gZnd6Z0aZJEk5opDeVhw/KprCk9G3PA2trNTRyjXDoNM45BvoY7Hkd9ZSdupVMGHWhj+dRQ5lnO1Ug3A0CbL/Q==
+  resolved "https://registry.yarnpkg.com/@pooltogether/aave-v3-yield-source/-/aave-v3-yield-source-1.1.0.tgz#fb3fb60a9694215792246b02ee7116e95d3d78f5"
+  integrity sha512-mVazWFKRFyDjtd4hQtu3rrhrReziRoEIB4sEnvCtKq3evAwOTCXQWOJg9zeydxJ8AyDDJaPOvV/ysjmVhCPv4g==
+  dependencies:
+    "@aave/core-v3" "1.13.1"
+    "@aave/periphery-v3" "1.10.0"
+    "@openzeppelin/contracts" "4.5.0"
+    "@pooltogether/owner-manager-contracts" "1.1.0"
+    "@pooltogether/yield-source-interface" "1.3.0"
+
+"@pooltogether/aave-yield-source@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@pooltogether/aave-yield-source/-/aave-yield-source-1.2.0.tgz#2a9b3c481c37c6a02bf84e48e09d9a255f0be10f"
+  integrity sha512-QO/yT7JtHCTfTlbaCDPe7rcLFP/ROP30t8qlBgsSyXV5ollkwftEOPsQ3/9/uSOOs09fBpg6Deu/xTX+JdxJow==
   dependencies:
     "@openzeppelin/contracts" "4.3.2"
     "@pooltogether/fixed-point" "1.0.0"
@@ -1071,7 +1133,7 @@
   resolved "https://registry.yarnpkg.com/@pooltogether/contract-list-schema/-/contract-list-schema-0.1.4.tgz#52a4b35e1ef1b263c643e517ca1908180cf1cb6e"
   integrity sha512-oLAu9TGfU9xf1QFJJZQxUj0hsfcRao/DMCZ1hVvDkmwOnX1PUkuhuvZfvgwLFd4hJ4m2kjdCyTJ+VJ5qvgjyww==
 
-"@pooltogether/draw-calculator-js@1.0.3-beta.4", "@pooltogether/draw-calculator-js@^1.0.3-beta.2":
+"@pooltogether/draw-calculator-js@1.0.3-beta.4":
   version "1.0.3-beta.4"
   resolved "https://registry.yarnpkg.com/@pooltogether/draw-calculator-js/-/draw-calculator-js-1.0.3-beta.4.tgz#24f46c360ebf6a070e193a95d81c026b7209ce89"
   integrity sha512-JAh3/gjPdebJm9M8rPP9KRIrVAlBIAe/uZ/5jpDzmQUuEiUBp5FNrUyFFUdK8ATF4x3dVLjxvcwACBQYHPPr8w==
@@ -1079,7 +1141,7 @@
     chalk "^4.1.2"
     debug "^4.3.2"
 
-"@pooltogether/etherplex@^1.1.2":
+"@pooltogether/etherplex@^1.1.4":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@pooltogether/etherplex/-/etherplex-1.1.4.tgz#d7584d43f82bc22630a9068f6c69e9a049740621"
   integrity sha512-SFEv9Ck8ycFkDUkdU8KzQblVyQeFRmOIbdLedNNfgQZM/dNnIX6oAiNxUQrlnicl+03sWtLrenKqu/Hnl0VBjg==
@@ -1093,6 +1155,13 @@
   version "0.6.4-beta.1"
   resolved "https://registry.yarnpkg.com/@pooltogether/evm-chains-extended/-/evm-chains-extended-0.6.4-beta.1.tgz#dba3a24fe22c2c0832e9cf0eb4af2e5bad5615f0"
   integrity sha512-wTaR1bJGWDoW/xlvymtuEZOwgQu3N4pDHTdCm00lMFN0AH8JKczyJRijTv5Jef7dhGmiZIMOlyBFCFkMlVU6ew==
+  dependencies:
+    evm-chains "^0.2.0"
+
+"@pooltogether/evm-chains-extended@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@pooltogether/evm-chains-extended/-/evm-chains-extended-0.7.0.tgz#c802ab29e7bc68bde4a9059e1c2565734105de72"
+  integrity sha512-sfq/u3bNUJFsDrroZuUMY6Mtdiaotpw4Lj9e0zscfdu6yksVfQu0lZmItSE4oYs1oRyUyanGBDKJ0D/2DAABxw==
   dependencies:
     evm-chains "^0.2.0"
 
@@ -1123,22 +1192,24 @@
   resolved "https://registry.yarnpkg.com/@pooltogether/prize-api-schema/-/prize-api-schema-1.0.0-beta.1.tgz#173d36fa93e03dcaca638706c17f9d01db9e07d7"
   integrity sha512-6rSz5xQjBa+rqXjpU83cwBsOdeHdP3KAE+y4dMCDtMx/2qXzP9A20Py9tbTjUS8iivlGYO766jSFneDWOKrdqQ==
 
-"@pooltogether/utilities@^0.3.7":
-  version "0.3.11"
-  resolved "https://registry.yarnpkg.com/@pooltogether/utilities/-/utilities-0.3.11.tgz#b09eae15c9e3dc6d4ac30623afc51e761b05ae40"
-  integrity sha512-gEcxl604z8K53HBU2N0MxRCbSg+WhDXKwrrmwEEyg8jE9yK4XeJtXozpEPtA/HJXdDw033xRiFM6qAe3icDw3Q==
+"@pooltogether/utilities@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@pooltogether/utilities/-/utilities-0.5.0.tgz#78180e761886f3c19349ce169b0843580c70f345"
+  integrity sha512-1CvHRm3wrecbwYBBOcEbnyMC7z7jy2JZ6IMSzF0uN5MxSTLruZWUl/0tM+uxxc5zyg8op7S4rKLn6JeETLHDDQ==
 
-"@pooltogether/v4-client-js@^0.10.2":
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/@pooltogether/v4-client-js/-/v4-client-js-0.10.2.tgz#7c90222e50e1a1a724090c0c31f628b5bb81b2b5"
-  integrity sha512-UYD/OIxqBRhXNjxbWaC2DIqQ4g+ZEKOhe/+oV67zl5IRBLIRfsrae7xhEeHZB1JtiREA/73kTDITbn1DqNcIdw==
+"@pooltogether/v4-client-js@0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-client-js/-/v4-client-js-0.14.0.tgz#4eecb03be8a201cd2f02343eaef3b1b83528b799"
+  integrity sha512-jPyr3stzQxhlYaaJmae9wfCT/EQvUQ61zFmjNdz6rdA0NM4jeGx6zkkRL4+edPTzdArjSbFqI48wWM2a2RJufA==
   dependencies:
     "@ethersproject/abi" "^5.1.0"
     "@pooltogether/contract-list-schema" "^0.1.4"
-    "@pooltogether/draw-calculator-js" "^1.0.3-beta.2"
-    "@pooltogether/etherplex" "^1.1.2"
-    "@pooltogether/utilities" "^0.3.7"
+    "@pooltogether/etherplex" "^1.1.4"
+    "@pooltogether/evm-chains-extended" "^0.7.0"
+    "@pooltogether/utilities" "^0.5.0"
+    "@pooltogether/v4-utils-js" "^0.1.3"
     debug "^4.3.3"
+    ethers "^5.4.6"
 
 "@pooltogether/v4-core@1.2.0":
   version "1.2.0"
@@ -1164,19 +1235,20 @@
     "@pooltogether/yield-source-interface" "1.3.0"
     deploy-eip-1820 "1.0.0"
 
-"@pooltogether/v4-mainnet@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@pooltogether/v4-mainnet/-/v4-mainnet-1.5.0.tgz#982097a6455e6c3cfd7990b16a3b1959c05bdf85"
-  integrity sha512-4//H0xmyGyAal1jAyEItpukkNs7OpgzKk7acrJbQb1LiP8BuWgQFkkfTG1Sjek4GTmqJomUWCSefHrnZSP0uYQ==
+"@pooltogether/v4-mainnet@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-mainnet/-/v4-mainnet-1.6.0.tgz#31dfffcc3e181c9f19155d133d32b48c0dc68dfe"
+  integrity sha512-Bypbv15i1kF7DwLMB+aGX+NS4Qvc5oNJpN+10eCPc4tu4UWJndaZQq5Yx8VygpxkcWljt4HirAe1Au7w4jG8NQ==
   dependencies:
     "@chainlink/contracts" "0.4.0"
     "@openzeppelin/contracts" "4.4.2"
-    "@pooltogether/aave-yield-source" "1.1.0"
+    "@pooltogether/aave-v3-yield-source" "1.1.0"
+    "@pooltogether/aave-yield-source" "1.2.0"
     "@pooltogether/draw-calculator-js" "1.0.3-beta.4"
     "@pooltogether/owner-manager-contracts" "1.1.0"
     "@pooltogether/pooltogether-rng-contracts" "1.5.1"
     "@pooltogether/v4-core" "1.3.0-beta.1"
-    "@pooltogether/v4-periphery" "1.2.2"
+    "@pooltogether/v4-periphery" "1.2.5"
     "@pooltogether/v4-timelocks" "1.1.0"
     "@pooltogether/v4-twab-delegator" "1.0.0"
     "@pooltogether/yield-source-interface" "1.3.0"
@@ -1184,22 +1256,17 @@
     glob "7.2.0"
     lodash "^4.17.21"
 
-"@pooltogether/v4-periphery@1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@pooltogether/v4-periphery/-/v4-periphery-1.2.2.tgz#400f9acb642ebd2fa0a1acc9fed6a91041383e54"
-  integrity sha512-bzYr/v3e0Qudb3TDltTJdTkcd9/67CAwOQZwQwMa3/Jgcx0oRthpgTkyeGh2CnJyahIgbNpg7JPP/FlsAkiRkQ==
-
 "@pooltogether/v4-periphery@1.2.5":
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/@pooltogether/v4-periphery/-/v4-periphery-1.2.5.tgz#12125fc8f1b6a8efaa9bfb4855a7a0c63b16ee35"
   integrity sha512-Q9E+o3cNh+w7HJLTp/lGJ0/DmfBQyCEyIwnD+uw6AZfaP9dykDFOkbTsHw6QYjS5+uUbklMjtSb5KSwPAuA9dA==
 
-"@pooltogether/v4-pool-data@^1.8.0-beta.4":
-  version "1.8.0-beta.4"
-  resolved "https://registry.yarnpkg.com/@pooltogether/v4-pool-data/-/v4-pool-data-1.8.0-beta.4.tgz#afcca47f1eb43795840b9b71ca17d2d16bd48483"
-  integrity sha512-uyraZtcYb28fM2RVe7dlG/WhfIqnauN60P0t5jvnM0ghKiWXY799CAWYpBGZfSXorvf+/UuYagLGS1EI92K1LQ==
+"@pooltogether/v4-pool-data@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-pool-data/-/v4-pool-data-1.8.0.tgz#607cd36c337305bb3eb7a8fac358dad86e7f1062"
+  integrity sha512-L0NgiAmshjh3Q1EcxGLxrJs8PK4DazV7ml1Isvv1cCYPvZZfyMAS96D9bObdKSnYJfeHdNiYlGjUp7C+G3+Iyw==
   dependencies:
-    "@pooltogether/v4-mainnet" "1.5.0"
+    "@pooltogether/v4-mainnet" "1.6.0"
     "@pooltogether/v4-testnet" "1.5.4"
 
 "@pooltogether/v4-testnet@1.5.4":
@@ -1232,6 +1299,25 @@
   dependencies:
     "@openzeppelin/contracts" "4.5.0"
     "@pooltogether/v4-core" "1.2.0"
+
+"@pooltogether/v4-utils-js@0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@pooltogether/v4-utils-js/-/v4-utils-js-0.1.4.tgz#39d6b7ea31e3179a9636d1cab02a31a8dcee1c6c"
+  integrity sha512-AOgkUGlKdJVv73wMGZe7oZb2sYtfMgUzBhH7r61+YPyehhQzORJpwwiVMwb9xLbcoTD5b2y880gPSlUoTi/tdg==
+  dependencies:
+    "@ethersproject/abi" "^5.5.0"
+    "@ethersproject/address" "^5.5.0"
+    "@ethersproject/bignumber" "^5.5.0"
+    "@ethersproject/bytes" "^5.5.0"
+    "@ethersproject/contracts" "^5.5.0"
+    "@ethersproject/keccak256" "^5.5.0"
+    "@ethersproject/networks" "^5.5.0"
+    "@ethersproject/solidity" "^5.5.0"
+    "@ethersproject/strings" "^5.5.0"
+    "@ethersproject/units" "^5.5.0"
+    "@pooltogether/contract-list-schema" "^0.1.4"
+    ethers "^5.5.1"
+    lodash "^4.17.21"
 
 "@pooltogether/v4-utils-js@^0.1.3":
   version "0.1.3"
@@ -1681,6 +1767,11 @@ aws-sdk@^2.1069.0:
     uuid "8.0.0"
     xml2js "0.4.19"
 
+axios-curlirize@^1.3.7:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/axios-curlirize/-/axios-curlirize-1.4.0.tgz#9a42565c953163a75e510c5083b062babf4ea973"
+  integrity sha512-hpA7L+WbAuN/gWOabr4cAjv7F0ELP3Sl9O36cJ3g2cOL9hf8iB2cjPQ8j91fpmUrKRABYEGiVVDSSjnjV3aUrg==
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
@@ -1700,6 +1791,11 @@ before-after-hook@^2.2.0:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/before-after-hook/-/before-after-hook-2.2.2.tgz#a6e8ca41028d90ee2c24222f201c90956091613e"
   integrity sha512-3pZEU3NT5BFUo/AD5ERPWOgQOCZITni6iavr5AUw5AUwQjMlI0kzu5btnyD39AF0gUEsDPwJT+oY1ORBJijPjQ==
+
+bignumber.js@^9.0.1:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.0.2.tgz#71c6c6bed38de64e24a65ebe16cfcf23ae693673"
+  integrity sha512-GAcQvbpsM0pUb0zw1EI0KhQEZ+lRwR5fYaAp3vPOYuP7aDvGy6cVN6XHLauvF8SOga2y0dcLcjt3iQDTSEliyw==
 
 bin-links@^3.0.0:
   version "3.0.1"
@@ -1882,6 +1978,14 @@ cardinal@^2.1.1:
   dependencies:
     ansicolors "~0.3.2"
     redeyed "~2.1.0"
+
+cbor@^5.0.2:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/cbor/-/cbor-5.2.0.tgz#4cca67783ccd6de7b50ab4ed62636712f287a67c"
+  integrity sha512-5IMhi9e1QU76ppa5/ajP1BmMWZ2FHkhAhjeVKQ/EFCgYSEaeVaoGtL7cxJskf9oCCk+XjzaIdc3IuU/dbA/o2A==
+  dependencies:
+    bignumber.js "^9.0.1"
+    nofilter "^1.0.4"
 
 chai@^4:
   version "4.3.6"
@@ -2654,6 +2758,42 @@ esutils@^2.0.2:
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.3.tgz#74d2eb4de0b8da1293711910d50775b9b710ef64"
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
 
+ethers@^5.4.6:
+  version "5.6.9"
+  resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.6.9.tgz#4e12f8dfcb67b88ae7a78a9519b384c23c576a4d"
+  integrity sha512-lMGC2zv9HC5EC+8r429WaWu3uWJUCgUCt8xxKCFqkrFuBDZXDYIdzDUECxzjf2BMF8IVBByY1EBoGSL3RTm8RA==
+  dependencies:
+    "@ethersproject/abi" "5.6.4"
+    "@ethersproject/abstract-provider" "5.6.1"
+    "@ethersproject/abstract-signer" "5.6.2"
+    "@ethersproject/address" "5.6.1"
+    "@ethersproject/base64" "5.6.1"
+    "@ethersproject/basex" "5.6.1"
+    "@ethersproject/bignumber" "5.6.2"
+    "@ethersproject/bytes" "5.6.1"
+    "@ethersproject/constants" "5.6.1"
+    "@ethersproject/contracts" "5.6.2"
+    "@ethersproject/hash" "5.6.1"
+    "@ethersproject/hdnode" "5.6.2"
+    "@ethersproject/json-wallets" "5.6.1"
+    "@ethersproject/keccak256" "5.6.1"
+    "@ethersproject/logger" "5.6.0"
+    "@ethersproject/networks" "5.6.4"
+    "@ethersproject/pbkdf2" "5.6.1"
+    "@ethersproject/properties" "5.6.0"
+    "@ethersproject/providers" "5.6.8"
+    "@ethersproject/random" "5.6.1"
+    "@ethersproject/rlp" "5.6.1"
+    "@ethersproject/sha2" "5.6.1"
+    "@ethersproject/signing-key" "5.6.2"
+    "@ethersproject/solidity" "5.6.1"
+    "@ethersproject/strings" "5.6.1"
+    "@ethersproject/transactions" "5.6.2"
+    "@ethersproject/units" "5.6.1"
+    "@ethersproject/wallet" "5.6.2"
+    "@ethersproject/web" "5.6.1"
+    "@ethersproject/wordlists" "5.6.1"
+
 ethers@^5.5.1:
   version "5.6.8"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.6.8.tgz#d36b816b4896341a80a8bbd2a44e8cb6e9b98dd4"
@@ -2935,6 +3075,15 @@ fs-extra@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-6.0.1.tgz#8abc128f7946e310135ddc93b98bddb410e7a34b"
   integrity sha512-GnyIkKhhzXZUWFCaJzvyDLEEgDkPfb4/TPvJCJVuS8MWZgoSsErf++QpiAlDnKFcqhRlm+tIOcencCjyJE6ZCA==
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^4.0.0"
+    universalify "^0.1.0"
+
+fs-extra@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
+  integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
   dependencies:
     graceful-fs "^4.1.2"
     jsonfile "^4.0.0"
@@ -4147,7 +4296,7 @@ node-addon-api@^3.0.0:
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-3.2.1.tgz#81325e0a2117789c0128dab65e7e38f07ceba161"
   integrity sha512-mmcei9JghVNDYydghQmeDX8KoAm0FAiYyIcUt/N4nhyAipB17pllZQDOJD2fotxABnt4Mdz+dKTO7eftLg4d0A==
 
-node-fetch@2.6.7, node-fetch@^2.6.7:
+node-fetch@2.6.7, node-fetch@^2.6.0, node-fetch@^2.6.7:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
   integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
@@ -4179,6 +4328,11 @@ node-releases@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.5.tgz#280ed5bc3eba0d96ce44897d8aee478bfb3d9666"
   integrity sha512-U9h1NLROZTq9uE1SNffn6WuPDg8icmi3ns4rEl/oTfIle4iLjTliCzgTsbaIFMq/Xn078/lfY/BL0GWZ+psK4Q==
+
+nofilter@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/nofilter/-/nofilter-1.0.4.tgz#78d6f4b6a613e7ced8b015cec534625f7667006e"
+  integrity sha512-N8lidFp+fCz+TD51+haYdbDGrcBWwuHX40F5+z0qkUjMJ5Tp+rdSuAkMJ9N9eoolDlEVTf6u5icM+cNKkKW2mA==
 
 nopt@^5.0.0:
   version "5.0.0"
@@ -5376,6 +5530,13 @@ through@^2.3.6:
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
 
+tmp-promise@^3.0.2:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/tmp-promise/-/tmp-promise-3.0.3.tgz#60a1a1cc98c988674fcbfd23b6e3367bdeac4ce7"
+  integrity sha512-RwM7MoPojPxsOBYnyd2hy0bxtIlVrihNs9pj5SUvY8Zz1sQcQG2tG1hSr8PDxfgEB8RNKDhqbIlroIarSNDNsQ==
+  dependencies:
+    tmp "^0.2.0"
+
 tmp@^0.0.33:
   version "0.0.33"
   resolved "https://registry.yarnpkg.com/tmp/-/tmp-0.0.33.tgz#6d34335889768d21b2bcda0aa277ced3b1bfadf9"
@@ -5389,6 +5550,13 @@ tmp@^0.1.0:
   integrity sha512-J7Z2K08jbGcdA1kkQpJSqLF6T0tdQqpR2pnSUXsIchbPdTI9v3e85cLW0d6WDhwuAleOV71j2xWs8qMPfK7nKw==
   dependencies:
     rimraf "^2.6.3"
+
+tmp@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/tmp/-/tmp-0.2.1.tgz#8457fc3037dcf4719c251367a1af6500ee1ccf14"
+  integrity sha512-76SUhtfqR2Ijn+xllcI5P1oyannHNHByD80W1q447gU3mp9G9PSpGdWmjUOHRDPiHYacIk66W7ubDTuPF3BEtQ==
+  dependencies:
+    rimraf "^3.0.0"
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
