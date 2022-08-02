@@ -28,9 +28,11 @@ import writeToOutput from '../../lib/utils/writeToOutput';
 import writePrizesToOutput from '../../lib/utils/writePrizesToOutput';
 import { verifyAgainstSchema } from '../../lib/utils/verifyAgainstSchema';
 import {
+  defaultVersion,
   getContract,
   getPrizeConfigHistoryContract,
   getPrizePoolContract,
+  secondVersion,
   sumPrizeAmounts,
 } from '../../lib/utils';
 
@@ -86,7 +88,11 @@ export default class DrawPrizes extends Command {
     const testNetworkVersion = version === '2' ? tokenomicsTestnet : testnet;
     const network = isTestNetwork ? testNetworkVersion : mainnet;
 
-    const prizeDistributorContract = getContract(chainId, ContractType.PrizeDistributor, network);
+    const prizeDistributorContract = await getContract(
+      chainId,
+      ContractType.PrizeDistributor,
+      network,
+    );
 
     this.warn('Failed to calculate Draw Prizes (' + error + ')');
 
@@ -111,23 +117,28 @@ export default class DrawPrizes extends Command {
     const isTestNetwork = isTestnet(chainId);
     const testNetworkVersion = version === '2' ? tokenomicsTestnet : testnet;
     const network = isTestNetwork ? testNetworkVersion : mainnet;
+    const prizeDistributorContractVersion = version === '2' ? secondVersion : defaultVersion;
 
-    const ContractPrizeDistributor = getContract(chainId, ContractType.PrizeDistributor, network);
-
-    const prizePool = await getPrizePoolContract(ticket, chainId, network, version);
-
-    const outDirWithSchema = createOutputPath(
-      outDir,
+    const ContractPrizeDistributor = await getContract(
       chainId,
-      ContractPrizeDistributor.address.toLowerCase(),
-      drawId,
+      ContractType.PrizeDistributor,
+      network,
+      prizeDistributorContractVersion,
     );
 
-    writeToOutput(outDirWithSchema, 'status', DrawPrizes.statusLoading);
-
+    const prizePool = await getPrizePoolContract(ticket, chainId, network, version);
     const ContractTicket = await prizePool.getTicketContract();
 
     if (version === '2') {
+      const outDirWithSchema = createOutputPath(
+        outDir,
+        chainId,
+        `${ContractPrizeDistributor.address.toLowerCase()}/${ContractTicket.address.toLowerCase()}`,
+        drawId,
+      );
+
+      writeToOutput(outDirWithSchema, 'status', DrawPrizes.statusLoading);
+
       const prizeDistributorV2 = new PrizeDistributorV2(
         ContractPrizeDistributor,
         getProvider(chainId),
@@ -201,6 +212,15 @@ export default class DrawPrizes extends Command {
 
       writeToOutput(outDirWithSchema, 'status', statusSuccess);
     } else {
+      const outDirWithSchema = createOutputPath(
+        outDir,
+        chainId,
+        ContractPrizeDistributor.address.toLowerCase(),
+        drawId,
+      );
+
+      writeToOutput(outDirWithSchema, 'status', DrawPrizes.statusLoading);
+
       const prizeDistributorV1 = new PrizeDistributorV1(
         ContractPrizeDistributor,
         getProvider(chainId),

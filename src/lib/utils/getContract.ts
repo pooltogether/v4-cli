@@ -5,46 +5,52 @@ import {
   getContractsByType,
   PrizePool,
   sortContractsByChainId,
+  Version,
 } from '@pooltogether/v4-client-js';
 import * as ethers from '@ethersproject/contracts';
 
 import getProvider from './getProvider';
 
-export function getContracts(
+export const defaultVersion: Version = { major: 1, minor: 0, patch: 0 };
+export const secondVersion: Version = { major: 2, minor: 0, patch: 0 };
+
+export const getContracts = async (
   chainId: string,
   contractType: ContractType,
   network: ContractList,
-): Contract[] {
+  contractVersion: Version = defaultVersion,
+): Promise<Contract[]> => {
   try {
-    const contract = getContractsByType(
+    const contracts = getContractsByType(
       network.contracts as Contract[],
       contractType,
-      network.version,
+      contractVersion,
     );
 
-    const contracts = sortContractsByChainId(contract);
+    const contractsSortedByChainId = sortContractsByChainId(contracts);
 
-    return contracts[Number(chainId)];
+    return contractsSortedByChainId[Number(chainId)];
   } catch {
     throw new Error(`Contract ${contractType} not found for chainId ${chainId}`);
   }
-}
+};
 
-export function getContract(
+export const getContract = async (
   chainId: string,
   contractType: ContractType,
   network: ContractList,
-): Contract {
-  const contracts = getContracts(chainId, contractType, network);
+  contractVersion: Version = defaultVersion,
+): Promise<Contract> => {
+  const contracts = await getContracts(chainId, contractType, network, contractVersion);
 
   return contracts[0];
-}
+};
 
 export const getPrizeConfigHistoryContract = async (
   chainId: string,
   network: ContractList,
 ): Promise<any> => {
-  const { address, abi } = getContracts(chainId, ContractType.PrizeConfigHistory, network)[0];
+  const { address, abi } = await getContract(chainId, ContractType.PrizeConfigHistory, network);
 
   return new ethers.Contract(address, abi, getProvider(chainId));
 };
@@ -58,7 +64,7 @@ export const getPrizePoolContract = async (
   let prizePool: PrizePool;
 
   if (version === '2') {
-    const prizePoolContracts = getContracts(chainId, ContractType.PrizePool, network);
+    const prizePoolContracts = await getContracts(chainId, ContractType.PrizePool, network);
 
     const loopThroughPrizePoolContracts = async () => {
       for (const prizePoolContract of prizePoolContracts) {
@@ -78,7 +84,7 @@ export const getPrizePoolContract = async (
     prizePool = (await loopThroughPrizePoolContracts()) as PrizePool;
   } else {
     prizePool = new PrizePool(
-      getContract(chainId, ContractType.YieldSourcePrizePool, network),
+      await getContract(chainId, ContractType.YieldSourcePrizePool, network),
       getProvider(chainId),
       network.contracts as unknown as Contract[],
     );

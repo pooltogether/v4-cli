@@ -8,7 +8,7 @@ export default async function getNewestPrizeDistribution(
   chainId: string,
   network: ContractList,
 ): Promise<any> {
-  const ContractPrizeDistributor = getContract(chainId, ContractType.PrizeDistributor, network);
+  const ContractPrizeDistributor = await getContract(chainId, ContractType.PrizeDistributor, network);
 
   const prizeDistributor = new PrizeDistributorV1(
     ContractPrizeDistributor,

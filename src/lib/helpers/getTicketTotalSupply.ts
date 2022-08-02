@@ -16,7 +16,7 @@ export const getTicketSecondaryListAverageTotalSupply = async (
   drawStartTimestamp: number,
   drawEndTimestamp: number,
 ): Promise<BigNumberish[]> => {
-  const prizePoolContracts = getContracts(chainId, ContractType.PrizePool, network);
+  const prizePoolContracts = await getContracts(chainId, ContractType.PrizePool, network);
 
   const ticketSecondaryListAverageTotalSupply: BigNumberish[] = [];
 
