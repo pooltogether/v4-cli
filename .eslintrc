@@ -4,10 +4,12 @@
     "oclif-typescript"
   ],
   "rules": {
+    "max-params": "off",
     "object-curly-spacing": [
       "error",
       "always"
     ],
+    "operator-linebreak": "off",
     "semi": [
       "error",
       "always"

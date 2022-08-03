@@ -46,6 +46,15 @@ export const getContract = async (
   return contracts[0];
 };
 
+export const getDrawBufferContract = async (
+  chainId: string,
+  network: ContractList,
+): Promise<any> => {
+  const { address, abi } = await getContract(chainId, ContractType.DrawBuffer, network);
+
+  return new ethers.Contract(address, abi, getProvider(chainId));
+};
+
 export const getPrizeConfigHistoryContract = async (
   chainId: string,
   network: ContractList,

@@ -8,23 +8,19 @@ async function spawnComputeDrawPrizesProcess(
   drawId: number,
   ticket: string,
   outDir: string,
+  version = '1',
 ): Promise<string> {
-  try {
-    const path = resolve(__dirname, '../../../bin/run');
-    const { stdout, stderr } = await exec(
-      `${path} compute drawPrizes --chainId ${chainId} --drawId ${drawId} --ticket ${ticket} --outDir ${outDir}`,
-    );
+  const path = resolve(__dirname, '../../../bin/run');
 
-    if (stderr) {
-      console.log(stderr);
-      return stderr;
-    }
+  const { stdout, stderr } = await exec(
+    `${path} compute drawPrizes --version ${version} --chainId ${chainId} --drawId ${drawId} --ticket ${ticket} --outDir ${outDir}`,
+  );
 
-    return stdout;
-  } catch (error: any) {
-    console.error(error);
-    return error;
+  if (stderr) {
+    return stderr;
   }
+
+  return stdout;
 }
 
 export default spawnComputeDrawPrizesProcess;

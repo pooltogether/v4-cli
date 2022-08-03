@@ -6,6 +6,7 @@ export {
   defaultVersion,
   getContract,
   getContracts,
+  getDrawBufferContract,
   getPrizeConfigHistoryContract,
   getPrizePoolContract,
   secondVersion,

@@ -2,7 +2,7 @@ import * as core from '@actions/core';
 import { Command, Flags } from '@oclif/core';
 import { mainnet, prizePoolNetworkTestnet } from '@pooltogether/v4-pool-data';
 
-import getNewestPrizeDistribution from '../../lib/helpers/getNewestPrizeDistribution';
+import getNewestPrizeDistributionDrawId from '../../lib/helpers/getNewestPrizeDistributionDrawId';
 import findMostRecentDrawCommitedForChainId from '../../lib/helpers/findMostRecentDrawCommitedForChainId';
 import spawnComputeDrawPrizesProcess from '../../lib/workers/spawnComputeDrawPrizesProcess';
 import { isTestnet } from '../../lib/utils';
@@ -44,16 +44,18 @@ export default class PoolPrizes extends Command {
 
   public async run(): Promise<void> {
     const { flags } = await this.parse(PoolPrizes);
-    const { chainId, ticket, outDir } = flags;
+    const { chainId, ticket, outDir, version } = flags;
 
     const isTestNetwork = isTestnet(chainId);
     const network = isTestNetwork ? prizePoolNetworkTestnet : mainnet;
 
-    const newestPrizeDistributionDrawId = (await getNewestPrizeDistribution(chainId, network)).drawId;
+    const newestPrizeDistributionDrawId = await getNewestPrizeDistributionDrawId(chainId, network, version);
+
     const mostRecentCommitedDrawId = findMostRecentDrawCommitedForChainId(
       outDir,
       chainId,
       ticket,
+      version,
     );
 
     const runRequired = mostRecentCommitedDrawId.toString() !== newestPrizeDistributionDrawId.toString();
@@ -69,8 +71,13 @@ export default class PoolPrizes extends Command {
           `Computing Draw prizes for drawId: ${drawId} on chainId: ${chainId} using ticket: ${ticket}`,
         );
 
-        // eslint-disable-next-line no-await-in-loop
-        await spawnComputeDrawPrizesProcess(chainId, drawId, ticket, outDir);
+        try {
+          // eslint-disable-next-line no-await-in-loop
+          await spawnComputeDrawPrizesProcess(chainId, drawId, ticket, outDir, version);
+        } catch {
+          // It may error if the draw is expired so we want to skip it and continue
+          continue;
+        }
       }
 
       core.setOutput('runStatus', 'true');
