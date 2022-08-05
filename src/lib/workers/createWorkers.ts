@@ -21,7 +21,7 @@ async function runCalculateDrawResultsWorker(
     normalizedUserBalances.map(async (userBalance: NormalizedUserBalance) => {
       // serialize the data as strings
       const user = {
-        address: userBalance.address,
+        address: userBalance.address.toLowerCase(),
         balance: userBalance.normalizedBalance.toString(),
       }
       const _prizeDistribution = {

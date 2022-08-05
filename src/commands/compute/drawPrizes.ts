@@ -69,7 +69,7 @@ export default class DrawPrizes extends Command {
     const prizeDistributorContract = getContract(chainId, 'PrizeDistributor')
     this.warn('Failed to calculate Draw Prizes (' + error + ')')
     const statusFailure = updateStatusFailure(DrawPrizes.statusLoading.createdAt, error)
-    const outDirWithSchema = createOutputPath(outDir, chainId, prizeDistributorContract.address, drawId)
+    const outDirWithSchema = createOutputPath(outDir, chainId, prizeDistributorContract.address.toLowerCase(), drawId)
     writeToOutput(outDirWithSchema, 'status', statusFailure)
     createExitCode(error, this)
   }

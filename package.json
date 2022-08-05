@@ -3,16 +3,10 @@
   "description": "PoolTogether V4 Command Line Interface",
   "author": "PoolTogether Inc",
   "license": "GPL-3.0-only",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "repository": "https://github.com/pooltogether/v4-cli",
   "homepage": "https://github.com/pooltogether/v4-cli",
   "bugs": "https://github.com/pooltogether/v4-cli/issues",
-  "contributors": [
-    {
-      "name": "Kames Geraghty",
-      "email": "kames@pooltogether.com"
-    }
-  ],
   "main": "dist/index.js",
   "files": [
     "/bin",

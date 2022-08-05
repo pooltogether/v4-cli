@@ -10,3 +10,4 @@ node_modules
 oclif.manifest.json
 .envrc
 .DS_STORE
+.history

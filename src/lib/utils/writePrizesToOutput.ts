@@ -6,7 +6,7 @@ function writePrizesToOutput(
   allPrizes: Prize[][],
 ): void {
   for (const depositorPrizes of allPrizes) {
-    const address = depositorPrizes[0].address
+    const address = depositorPrizes[0].address.toLowerCase()
     writeToOutput(outDir, address.toLowerCase(), depositorPrizes)
   }
 }
