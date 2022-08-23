@@ -35,7 +35,7 @@ $ npm install -g @pooltogether/v4-cli
 $ ptv4 COMMAND
 running command...
 $ ptv4 (--version)
-@pooltogether/v4-cli/0.1.8 darwin-arm64 node-v16.16.0
+@pooltogether/v4-cli/0.1.10 darwin-arm64 node-v16.16.0
 $ ptv4 --help [COMMAND]
 USAGE
   $ ptv4 COMMAND
@@ -52,7 +52,7 @@ ptv4 compute drawPrizes
 
 Computes single Draw prizes for a PrizePool to a target output directory.
 
-Simply pass a `chainId`, `ticket` `drawId` and `outDir` to compute and locally save the results. 
+Simply pass a `chainId`, `ticket` `drawId` and `outDir` to compute and locally save the results.
 
 ```
 USAGE
