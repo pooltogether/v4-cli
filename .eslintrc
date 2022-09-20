@@ -2,5 +2,9 @@
   "extends": [
     "oclif",
     "oclif-typescript"
-  ]
+  ],
+  "rules": {
+    "unicorn/filename-case": "off",
+    "unicorn/numeric-separators-style": "off"
+  }
 }
