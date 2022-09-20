@@ -11,6 +11,8 @@ import {
   GOERLI_USDC_PRIZE_DISTRIBUTOR_ADDRESS,
   OPTIMISM_GOERLI_USDC_TICKET_ADDRESS,
   OPTIMISM_GOERLI_USDC_PRIZE_DISTRIBUTOR_ADDRESS,
+  ARBITRUM_GOERLI_USDC_TICKET_ADDRESS,
+  ARBITRUM_GOERLI_USDC_PRIZE_DISTRIBUTOR_ADDRESS,
 } from '../constants'
 
 function getPrizeDistributorAddress(chainId: string | number, ticket: string): string {
@@ -36,6 +38,10 @@ function getPrizeDistributorAddress(chainId: string | number, ticket: string): s
 
   if (chainId === '420' && ticket === OPTIMISM_GOERLI_USDC_TICKET_ADDRESS) {
     return OPTIMISM_GOERLI_USDC_PRIZE_DISTRIBUTOR_ADDRESS
+  }
+
+  if (chainId === '421613' && ticket === ARBITRUM_GOERLI_USDC_TICKET_ADDRESS) {
+    return ARBITRUM_GOERLI_USDC_PRIZE_DISTRIBUTOR_ADDRESS
   }
 
   throw new Error(

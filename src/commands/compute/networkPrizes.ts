@@ -8,6 +8,7 @@ import {
   OPTIMISM_USDC_TICKET_ADDRESS,
   GOERLI_USDC_TICKET_ADDRESS,
   OPTIMISM_GOERLI_USDC_TICKET_ADDRESS,
+  ARBITRUM_GOERLI_USDC_TICKET_ADDRESS,
 } from '../../lib/constants'
 
 export default class NetworkPrizes extends Command {
@@ -37,6 +38,7 @@ export default class NetworkPrizes extends Command {
       [10, OPTIMISM_USDC_TICKET_ADDRESS],
       [5, GOERLI_USDC_TICKET_ADDRESS],
       [420, OPTIMISM_GOERLI_USDC_TICKET_ADDRESS],
+      [421613, ARBITRUM_GOERLI_USDC_TICKET_ADDRESS],
     ]
 
     for (const network of networks) {

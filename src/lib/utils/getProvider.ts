@@ -1,7 +1,8 @@
-/* eslint-disable unicorn/numeric-separators-style */
 import {JsonRpcProvider} from '@ethersproject/providers'
 
-const _providers = {
+type Providers = { [k: string]: JsonRpcProvider };
+
+const providers: Providers = {
   // mainnets
   1: new JsonRpcProvider(process.env.ETHEREUM_MAINNET_RPC_URL),
   137: new JsonRpcProvider(process.env.POLYGON_MAINNET_RPC_URL),
@@ -12,11 +13,12 @@ const _providers = {
   80001: new JsonRpcProvider(process.env.POLYGON_MUMBAI_RPC_URL),
   43113: new JsonRpcProvider(process.env.AVALANCHE_FUJI_RPC_URL),
   420: new JsonRpcProvider(process.env.OPTIMISM_GOERLI_RPC_URL),
+  421613: new JsonRpcProvider(process.env.ARBITRUM_GOERLI_RPC_URL),
 }
 
-const getProvider = (chainId: string) => {
-  // @ts-ignore
-  const provider = _providers[chainId]
+const getProvider = (chainId: string): JsonRpcProvider => {
+  const provider = providers[chainId]
+
   if (!provider) {
     throw new Error(`No provider for chainId ${chainId}`)
   }

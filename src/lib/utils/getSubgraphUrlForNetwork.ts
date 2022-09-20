@@ -6,6 +6,7 @@ import {
   GOERLI_TWAB_SUBGRAPH_URL,
   MUMBAI_TWAB_SUBGRAPH_URL,
   OPTIMISM_GOERLI_TWAB_SUBGRAPH_URL,
+  ARBITRUM_GOERLI_TWAB_SUBGRAPH_URL,
 } from '../constants'
 
 function getSubgraphUrlForNetwork(chainId: string): string {
@@ -24,6 +25,8 @@ function getSubgraphUrlForNetwork(chainId: string): string {
     return MUMBAI_TWAB_SUBGRAPH_URL
   case '420':
     return OPTIMISM_GOERLI_TWAB_SUBGRAPH_URL
+  case '421613':
+    return ARBITRUM_GOERLI_TWAB_SUBGRAPH_URL
   default:
     throw new Error(`Unsupported network: ${chainId}`)
   }
